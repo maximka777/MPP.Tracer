@@ -9,6 +9,13 @@ namespace Tracer
 {
     public class XmlTraceResultFormatter : ITraceResultFormatter
     {
+        private string filePath;
+
+        public XmlTraceResultFormatter(string filePath)
+        {
+            this.filePath = filePath;
+        }
+        
         public void Format(TraceResult traceResult)
         {
             XElement root = new XElement("root");
@@ -18,15 +25,15 @@ namespace Tracer
                 threadElement.SetAttributeValue("id", key);
                 root.Add(threadElement);
                 foreach (TreeNode node in traceResult.threadDictionary[key].ClimbTree()){
-                    XElement methodElement = new XElement("mathod");
-                    methodElement.SetAttributeValue("methodName", node.methodName);
-                    methodElement.SetAttributeValue("paramsCount", node.paramsCount);
-                    methodElement.SetAttributeValue("totalTime", node.totalTime);
-                    methodElement.SetAttributeValue("className", node.className);
+                    XElement methodElement = new XElement("method");
+                    methodElement.SetAttributeValue("methodName", node.MethodName);
+                    methodElement.SetAttributeValue("paramsCount", node.ParamsCount);
+                    methodElement.SetAttributeValue("totalTime", node.TotalTime);
+                    methodElement.SetAttributeValue("className", node.ClassName);
                     threadElement.Add(methodElement);
                 }
             }
-            root.Save("xml.xml");
+            root.Save(filePath);
         }
     }
 }

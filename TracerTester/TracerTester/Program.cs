@@ -46,13 +46,14 @@ namespace TracerTester
 
             Thread thread = new Thread(program.TestMethod4);
             thread.Start();
-
+            
             program.TestMethod4();
+            thread.Join();
 
             Tracer.ConsoleTraceResultFormatter formatter = new Tracer.ConsoleTraceResultFormatter();
             formatter.Format(Tracer.Tracer.Instance.GetTraceResult());
 
-            Tracer.XmlTraceResultFormatter formatterXml = new Tracer.XmlTraceResultFormatter();
+            Tracer.XmlTraceResultFormatter formatterXml = new Tracer.XmlTraceResultFormatter("xml.xml");
             formatterXml.Format(Tracer.Tracer.Instance.GetTraceResult());
         }
     }

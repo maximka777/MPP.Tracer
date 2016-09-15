@@ -25,7 +25,7 @@ namespace Tracer
             if (node != null)
             {
                 yield return node;
-                foreach(TreeNode treeNode in node.childList){
+                foreach(TreeNode treeNode in node.ChildList){
                     foreach (TreeNode trNode in ClimbNode(treeNode))
                     {
                         yield return trNode;
@@ -56,7 +56,7 @@ namespace Tracer
         {
             foreach (TreeNode node in ClimbTree())
             {
-                if((node.stopTime.Ticks == 0) && ((result == null) || (node.startTime.CompareTo(result.startTime) >= 0))){
+                if((node.StopTime.Ticks == 0) && ((result == null) || (node.StartTime.CompareTo(result.StartTime) >= 0))){
                     result = node;
                 }
             }
@@ -66,7 +66,7 @@ namespace Tracer
         {
             foreach (TreeNode node in ClimbTree())
             {
-                if ((node.methodName == methodName) && (node.stopTime.Ticks == 0) && ((result == null) || (node.startTime.CompareTo(result.startTime) > 0)))
+                if ((node.MethodName == methodName) && (node.StopTime.Ticks == 0) && ((result == null) || (node.StartTime.CompareTo(result.StartTime) > 0)))
                 {
                     result = node;
                 }

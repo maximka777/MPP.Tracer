@@ -20,24 +20,24 @@ namespace Tracer
         public void AddMethod(int threadID, MethodBase methodBase, DateTime startTime)
         {
             TreeNode treeNode = new TreeNode();
-            treeNode.methodName = methodBase.Name;
-            treeNode.paramsCount = methodBase.GetParameters().Count();
-            treeNode.startTime = startTime;
-            treeNode.className = methodBase.DeclaringType.ToString();
+            treeNode.MethodName = methodBase.Name;
+            treeNode.ParamsCount = methodBase.GetParameters().Count();
+            treeNode.StartTime = startTime;
+            treeNode.ClassName = methodBase.DeclaringType.ToString();
 
             if (threadDictionary.ContainsKey(threadID))
             {
                 MyTree myTree = threadDictionary[threadID];
                 TreeNode node = null;
                 myTree.FindLastMethodInTree(ref node);
-                treeNode.level = node.level + 1;
-                node.childList.Add(treeNode);
+                treeNode.Level = node.Level + 1;
+                node.ChildList.Add(treeNode);
             }
             else
             {
                 MyTree myTree = new MyTree();
                 threadDictionary.TryAdd(threadID, myTree);
-                treeNode.level = 0;
+                treeNode.Level = 0;
                 myTree.Root = treeNode;
             }
         }
@@ -46,8 +46,8 @@ namespace Tracer
             MyTree myTree = threadDictionary[threadID];
             TreeNode treeNode = null;
             myTree.FindLastMethodByNameInTree(methodBase.Name, ref treeNode);
-            treeNode.stopTime = stopTime;
-            treeNode.totalTime = (long)(stopTime.Subtract(treeNode.startTime).TotalMilliseconds);
+            treeNode.StopTime = stopTime;
+            treeNode.TotalTime = (long)(stopTime.Subtract(treeNode.StartTime).TotalMilliseconds);
         }
     }
 }

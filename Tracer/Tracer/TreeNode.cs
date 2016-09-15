@@ -8,13 +8,18 @@ namespace Tracer
 {
     public class TreeNode
     {
-        public string methodName;
-        public DateTime startTime;
-        public DateTime stopTime;
-        public long totalTime;
-        public int paramsCount;
-        public string className;
-        public List<TreeNode> childList = new List<TreeNode>();
-        public int level;
+        public TreeNode()
+        {
+            ChildList = new List<TreeNode>();
+        }
+
+        public string MethodName { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime StopTime { get; set; }
+        public long TotalTime { get; set; }
+        public int ParamsCount { get; set; }
+        public string ClassName { get; set; }
+        public List<TreeNode> ChildList { get; set; }
+        public int Level { get; set; }
     }
 }

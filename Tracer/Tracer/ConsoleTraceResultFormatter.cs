@@ -22,7 +22,8 @@ namespace Tracer
                 Console.WriteLine("Thread id: " + key);
                 foreach (TreeNode node in traceResult.threadDictionary[key].ClimbTree())
                 {
-                    Console.WriteLine(GetTabSequence(node.level) + node.methodName + " " + node.paramsCount + " " + node.totalTime + " " + node.className);
+                    Console.WriteLine(GetTabSequence(node.Level) + node.MethodName + " " + 
+                        node.ParamsCount + " " + node.TotalTime + " " + node.ClassName);
                 }
             }
         }
