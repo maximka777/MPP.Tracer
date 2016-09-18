@@ -10,7 +10,7 @@ namespace Tracer
     {
         private static string GetTabSequence(int count)
         {
-            StringBuilder sb = new StringBuilder("");
+            StringBuilder sb = new StringBuilder();
             sb.Append('\t', count);
             return sb.ToString();
         }

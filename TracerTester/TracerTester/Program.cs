@@ -55,6 +55,7 @@ namespace TracerTester
 
             Tracer.XmlTraceResultFormatter formatterXml = new Tracer.XmlTraceResultFormatter("xml.xml");
             formatterXml.Format(Tracer.Tracer.Instance.GetTraceResult());
+            Console.Read();
         }
     }
 }
